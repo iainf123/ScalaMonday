@@ -1,5 +1,6 @@
 def iterations4b (A : String, B : Int) : Unit = {
+
     if (B > 0)
-        println(A*B)
+        print(A*B*4)
 }
 iterations4b("H", 4)

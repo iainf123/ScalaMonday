@@ -65,8 +65,13 @@ def close(): Unit = {
 
 
 class Part {
-    def addEmployee(part: Part) : Unit ={
+    def addPart(part: Part) : Unit ={
         PartArrayBuffer += part
+        val Part: String
+
+        def toString(): String =
+        s" PartName: $Part"
+
     }
 
 }
@@ -142,4 +147,18 @@ var Bike:     Bike = new Bike(2, "harley davidson", "IAF0983", "Bike", 2)
 var Garage1:  Garage = new Garage
 var Part:     Part = new Part
 
-var engine:   Engine = new Engine("engine")
+var Engine:   Part = new Part("engine")
+var door:     Part = new Part("door")
+var mirror:   Part = new Part("mirror")
+var Key:      Part = new Part("Key")
+var Alternator: Part = new Part("Alternator")
+var Spring:   Part = new Part ("Spring")
+var rearDoor: Part = new Part("rearDoor")
+var airFilter:Part = new Part("rearDoor")
+var radiator: Part = new Part("rearDoor")
+var bonnet:   Part = new Part
+var boot:     Part = new Part
+var peddle:   Part = new Part
+var handle:   Part = new Part
+var radio:    Part = new Part
+var knob:     Part = new Part

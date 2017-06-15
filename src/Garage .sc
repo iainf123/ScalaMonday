@@ -2,9 +2,7 @@ var VehicleArrayBuffer = scala.collection.mutable.ArrayBuffer.empty[Vehicle]
 var EmployeeArrayBuffer = scala.collection.mutable.ArrayBuffer.empty[Employee]
 var PartArrayBuffer = scala.collection.mutable.ArrayBuffer.empty[Part]
 
-class Garage {
-    val isOpen : Boolean = true
-    val fixed  : Boolean = true
+class Garage(var isOpen: Boolean) {
 
     def addVehicle(vehicle: Vehicle) : Unit ={
         VehicleArrayBuffer += vehicle
@@ -58,13 +56,18 @@ def close(): Unit = {
     //this.isOpen = false
 }
 
-//def calculation() :{
+def calculation(hours: Double, labourCharge: Double, partCost: Double): Double ={
 
-//}
+    val calculation: Double =(hours * labourCharge) + partCost
+    calculation
+
+}
 
 
 
 class Part( var Part: String,
+            val partCost: Int,
+            val hours: Int,
             var fixed: Boolean) {
 
     def addPart(Part: Part ) : Unit = {
@@ -178,22 +181,22 @@ var Bike5:     Bike = new Bike(6, "harley davidson", "IAF0983", "Bike", 2,true)
 var Bike6:     Bike = new Bike(7, "harley davidson", "IAF0983", "Bike", 2,true)
 var Bike7:     Bike = new Bike(8, "harley davidson", "IAF0983", "Bike", 2,false)
 var Bike8:     Bike = new Bike(9, "harley davidson", "IAF0983", "Bike", 2,true)
-var Bike9:     Bike = new Bike(10, "harley davidson", "IAF0983", "Bike", 2,true)
+var Bike9:     Bike = new Bike(10,"harley davidson", "IAF0983", "Bike", 2,true)
 
-var Garage1:   Garage = new Garage
+var Garage1:   Garage = new Garage(true)
 
-var Engine:    Part = new Part("engine",true)
-var door:      Part = new Part("door", true)
-var mirror:    Part = new Part("mirror",true)
-var Key:       Part = new Part("Key",true)
-var Alternator:Part = new Part("Alternator",false)
-var Spring:    Part = new Part ("Spring",false)
-var rearDoor:  Part = new Part("rearDoor",true)
-var airFilter: Part = new Part("rearDoor",false)
-var radiator:  Part = new Part("rearDoor",true)
-var bonnet:    Part = new Part("bonnet",false)
-var boot:      Part = new Part("boot",true)
-var peddle:    Part = new Part("peddle",true)
-var handle:    Part = new Part("handle",true)
-var radio:     Part = new Part("radio",false)
-var knob:      Part = new Part("knob",true)
+var Engine:    Part = new Part("engine",10,5,true)
+var door:      Part = new Part("door", 20,5,true)
+var mirror:    Part = new Part("mirror",30,2,true)
+var Key:       Part = new Part("Key",10,3,true)
+var Wheel:     Part = new Part("wheel",10,2,false)
+var Spring:    Part = new Part("Spring",10,3,false)
+var rearDoor:  Part = new Part("rearDoor",10,3,true)
+var airFilter: Part = new Part("rearDoor",10,3,false)
+var radiator:  Part = new Part("rearDoor",20,3,true)
+var bonnet:    Part = new Part("bonnet",20,3,false)
+var boot:      Part = new Part("boot",20,4,true)
+var peddle:    Part = new Part("peddle",10,4,true)
+var handle:    Part = new Part("handle",15,2,true)
+var radio:     Part = new Part("radio",15,3,false)
+var knob:      Part = new Part("knob",20,4,true)

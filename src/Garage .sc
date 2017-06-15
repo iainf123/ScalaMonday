@@ -6,10 +6,12 @@ class Garage(var isOpen: Boolean) {
 
     def addVehicle(vehicle: Vehicle) : Unit ={
         VehicleArrayBuffer += vehicle
+
     }
 
     def addEmployee(employee: Employee) : Unit ={
         EmployeeArrayBuffer += employee
+       //employee
     }
 }
 

@@ -1,49 +1,41 @@
-object Main {
-    def main(args: Array[String]) {
-        println("Pascal's Triangle")
-        for (row <- 0 to 10) {
-            for (col <- 0 to row)
-                print(pascal(col, row) + " ")
-            println()
-        }
-    }
+def tri(row:Int):List[Int] = {
+    row match { case 1 => List(1)
+    case n:Int => List(1) ::: ((tri(n-1)
+        zip tri(n-1).tail)
 
-    /**
-      * Exercise 1: Pascal's Triangle
-      */
-    def pascal(c: Int, r: Int): Int = {
-        if (c == 0 || c == r) 1
-        else pascal(c - 1, r - 1) + pascal(c, r - 1)
-    }
+        map {case (a,b) => a+b}) ::: List(1) }} //> tri: (row: Int)List[Int]
 
-    /**
-      * Exercise 2: Parentheses Balancing
-      */
-    def balance(chars: List[Char]): Boolean = {
-        def f(chars: List[Char], numOpens: Int): Boolean = {
-            if (chars.isEmpty) {
-                numOpens == 0
-            } else {
-                val h = chars.head
-                val n =
-                    if (h == '(') numOpens + 1
-                    else if (h == ')') numOpens - 1
-                    else numOpens
-                if (n >= 0) f(chars.tail, n)
-                else false
-            }
-        }
+tri(1) //> res1: List[Int] = List(1)
+tri(2) //> res2: List[Int] = List(1, 1)
+tri(3) //> res3: List[Int] = List(1, 2, 1)
+tri(4) //> res4: List[Int] = List(1, 3, 3, 1)
+tri(5) //> res5: List[Int] = List(1, 4, 6, 4, 1)
 
-        f(chars, 0)
-    }
+def pascalTri(n:Int) =
+    (1 to n) foreach {i=>print(" "*(n-i))
+        tri(i) map (c=>print(c+" "))
+        println} //> prettytri: (n: Int)Unit
 
-    /**
-      * Exercise 3: Counting Change
-      * Write a recursive function that counts how many different ways you can make
-      * change for an amount, given a list of coin denominations. For example,
-      * there are 3 ways to give change for 4 if you have coins with denomiation
-      * 1 and 2: 1+1+1+1, 1+1+2, 2+2.
-      */
+pascalTri(5)
+//> 1
+//| 1 1
+//| 1 2 1
+//| 1 3 3 1
+//| 1 4 6 4 1
 
+
+
+
+
+
+
+
+def balance(chars: List[Char]): Boolean = {
+    def balanced(chars: List[Char], open: Int): Boolean =
+        if (chars.isEmpty) open == 0
+        else if (chars.head == '(') balanced(chars.tail,open+1)
+        else if (chars.head == ')') open>0 && balanced(chars.tail,open-1)
+        else balanced(chars.tail,open)
+    balanced(chars,0)
 
 }
